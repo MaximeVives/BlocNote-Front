@@ -1,5 +1,5 @@
 <template>
-  <nav class="nav-bar">
+  <nav class="nav-bar nav-open">
     <div class="burger open">
       <span></span>
       <span></span>
@@ -26,9 +26,10 @@
 <script>
 export default {
   mounted() {
+
     document.addEventListener('click', (e) => {
       console.log(e.target);
-      if (e.target.classList.contains('open')) {
+      if (e.target.classList.contains('open') || e.target.classList.contains('close')) {
         this.burger_managing(this.classList);
       }
     });
@@ -36,14 +37,24 @@ export default {
   methods: {
     burger_managing(class_list) {
       console.log(class_list);
-      let nav = document.querySelector('.nav-wrapper')
+      let nav = document.querySelector('.nav-bar');
+      let burger = document.querySelector('.burger');
+      // let nav
 
-      if (nav.classList.contains('open')) {
-        nav.classList.remove('open')
-        nav.classList.add('close')
+
+      if (nav.classList.contains('nav-open')) {
+        nav.classList.remove('nav-open')
+        nav.classList.add('nav-close')
+        burger.classList.remove('open')
+        burger.classList.add('close')
+
+
       } else {
-        nav.classList.add('open')
-        nav.classList.remove('close')
+        nav.classList.add('nav-open')
+        nav.classList.remove('nav-close')
+        burger.classList.remove('close')
+        burger.classList.add('open')
+
       }
     }
   }
