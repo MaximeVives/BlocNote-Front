@@ -1,5 +1,10 @@
 <template>
   <nav class="nav-bar">
+    <div class="burger open">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
     <div class="logo">
       <img src="@/assets/logo.png" alt="Vue logo">
     </div>
@@ -17,6 +22,33 @@
   </nav>
   <router-view/>
 </template>
+
+<script>
+export default {
+  mounted() {
+    document.addEventListener('click', (e) => {
+      console.log(e.target);
+      if (e.target.classList.contains('open')) {
+        this.burger_managing(this.classList);
+      }
+    });
+  },
+  methods: {
+    burger_managing(class_list) {
+      console.log(class_list);
+      let nav = document.querySelector('.nav-wrapper')
+
+      if (nav.classList.contains('open')) {
+        nav.classList.remove('open')
+        nav.classList.add('close')
+      } else {
+        nav.classList.add('open')
+        nav.classList.remove('close')
+      }
+    }
+  }
+}
+</script>
 
 <style>
 
@@ -45,7 +77,7 @@
   --gray-darker-color: #676767;
 
   --nav-height: 90px;
-  --nav-padding: 20px;
+  --nav-padding: 80px;
   --nav-margin: 30px;
 
   --font-title: 'Good Mood', sans-serif;
@@ -55,7 +87,7 @@
 body{
   font-family: var(--font-general);
   max-height: 100vh;
-  overflow-y: hidden;
+  /*overflow-y: hidden;*/
 }
 
 .nav-bar{
@@ -68,6 +100,14 @@ body{
   height: var(--nav-height);
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 30px;
+}
+
+.nav-bar .burger{
+  display: none;
+}
+
+.nav-bar .burger * {
+  pointer-events: none;
 }
 
 .nav-bar .logo{
@@ -110,5 +150,51 @@ body{
   width: 100%;
 }
 
+@media screen and (max-width: 768px){
+  .nav-bar{
+    grid-template-columns: 100%;
+    grid-template-rows: calc(100%/3) calc(100%/3) calc(100%/3);
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--dark-color);
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 10;
+  }
+  .nav-bar .logo{
+    display: none;
+  }
+
+  .nav-bar .burger{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+  }
+
+  .nav-bar .burger span{
+    width: 30px;
+    height: 3px;
+    background-color: var(--light-color);
+    margin: 5px;
+  }
+
+  .nav-bar .auth-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--nav-height);
+    width: 100%;
+  }
+
+  .nav-bar .nav-wrapper ul li a, .nav-bar .auth-wrapper{
+    color: var(--light-color);
+  }
+}
 
 </style>
+

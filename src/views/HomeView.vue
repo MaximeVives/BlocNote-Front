@@ -35,13 +35,13 @@ export default {
   .home{
     height: calc(100vh - var(--nav-height) - var(--nav-margin));
     display: grid;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 35% 65%;
   }
   .home .text-description{
     display: flex;
     flex-direction: column;
-    padding-top: 30%;
-    padding-left: 5%;
+    padding-top: 15%;
+    padding-left: 20%;
   }
   .home .text-description h1{
     font-family: var(--font-title);
@@ -55,7 +55,7 @@ export default {
     line-height: 2.5rem;
     color: var(--gray-darker-color);
     text-align: justify;
-    width: 90%;
+    width: 80%;
   }
 
 
@@ -63,23 +63,27 @@ export default {
   .home .graphics{
     color: var(--primary-color);
     border-radius: var(--primary-color);
+    height: max-content;
   }
   .home .graphics .img-hero{
-    display: flex;
+    display: grid;
     justify-content: right;
     /*align-items: ;*/
     margin-top: 20px;
     height: 100%;
     width: 100%;
-  }
-
-  .home .graphics .img-hero .reg-rect-img{
     position: relative;
   }
 
+  .home .graphics .img-hero .reg-rect-img{
+    display: flex;
+    position: relative;
+    justify-content: flex-end;
+  }
+
   .home .graphics .img-hero img{
-    height: 85%;
-    width: auto;
+    height: auto;
+    width: 40vw;
   }
 
 
@@ -91,7 +95,7 @@ export default {
     top: 8%;
     left: -10%;
     width: 100%;
-    height: 85%;
+    height: 100%;
     background-color: transparent;
     border: 8px solid var(--primary-color);
   }
@@ -105,10 +109,50 @@ export default {
     left: -100%;
     width: 100%;
     height: 60%;
-    transform: translate(50%, -50%);
+    transform: translate(70%, -50%);
     background-color: transparent;
     border: 8px solid var(--primary-color);
   }
+
+
+  @media screen and (max-width: 1000px){
+    .home{
+      grid-template-columns: 100%;
+      margin: 0 20%;
+    }
+    .home .text-description{
+      padding-left: 0;
+    }
+    .home .text-description h1{
+      font-size: 4.5rem;
+    }
+    .home .text-description p{
+      font-size: 1rem;
+    }
+    .home .graphics .img-hero img{
+      width: 100%;
+    }
+  }
+
+  @media screen and (orientation: portrait){
+    .home{
+      grid-template-columns: 100%;
+      margin: 0 20%;
+    }
+    .home .text-description{
+      padding-left: 0;
+    }
+    .home .text-description h1{
+      font-size: 4.5rem;
+    }
+    .home .text-description p{
+      font-size: 1rem;
+    }
+    .home .graphics .img-hero img{
+      width: 100%;
+    }
+  }
+
 
 
 </style>
