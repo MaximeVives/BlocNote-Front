@@ -34,6 +34,10 @@ export default {
     });
   },
   methods: {
+
+    // TODO : Add a function to close the navbar when clicking on a link in the navbar
+
+
     burger_managing(class_list) {
       console.log(class_list);
       let nav = document.querySelector('.nav-bar');
