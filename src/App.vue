@@ -46,13 +46,15 @@ export default {
         nav.classList.add('nav-close')
         burger.classList.remove('open')
         burger.classList.add('close')
-
+        window.onscroll = function () { window.scrollTo(0, 0); };
 
       } else {
         nav.classList.add('nav-open')
         nav.classList.remove('nav-close')
         burger.classList.remove('close')
         burger.classList.add('open')
+      //  Reset scroll
+        window.onscroll = function () { };
 
       }
     }
@@ -225,7 +227,6 @@ body{
     width: 100%;
     position: absolute;
     z-index: 10;
-    overflow: hidden;
   }
 
   .nav-close .logo{
