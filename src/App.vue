@@ -26,7 +26,6 @@
 <script>
 export default {
   mounted() {
-
     document.addEventListener('click', (e) => {
       console.log(e.target);
       if (e.target.classList.contains('open') || e.target.classList.contains('close')) {
@@ -162,9 +161,61 @@ body{
 }
 
 @media screen and (max-width: 768px){
-  .nav-bar{
+  .nav-open{
+    display: flex;
+
+    justify-content: center;
+    padding: 0;
+    height: auto;
+    margin-bottom: 0;
+  }
+
+  .nav-open > *{
+    display: none;
+  }
+
+  .nav-open .burger{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+  }
+
+  .open span{
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: var(--dark-color);
+    margin: 5px;
+  }
+
+  .close{
+    display: flex!important;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    transform: rotate(45deg);
+  }
+
+  .close span{
+    width: 30px;
+    height: 3px;
+    background-color: var(--light-color);
+    margin: 5px;
+  }
+
+  .close span:nth-child(2){ display: none; }
+
+
+
+  .nav-close{
+    display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: calc(100%/3) calc(100%/3) calc(100%/3);
+    grid-template-rows: calc(100%/4) calc(100%/4) calc(100%/4) calc(100%/4);
     justify-content: space-between;
     align-items: center;
     background-color: var(--dark-color);
@@ -174,25 +225,28 @@ body{
     position: absolute;
     z-index: 10;
   }
-  .nav-bar .logo{
-    display: none;
-  }
 
-  .nav-bar .burger{
+  .nav-close .logo{
     display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     height: 100%;
     width: 100%;
+    filter: invert(1);
   }
 
-  .nav-bar .burger span{
-    width: 30px;
-    height: 3px;
-    background-color: var(--light-color);
-    margin: 5px;
+  .nav-close .logo img{
+    height: 50%;
+    width: auto;
   }
+
+
+  .nav-open .logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
 
   .nav-bar .auth-wrapper {
     display: flex;
@@ -202,7 +256,11 @@ body{
     width: 100%;
   }
 
-  .nav-bar .nav-wrapper ul li a, .nav-bar .auth-wrapper{
+  .nav-open .nav-wrapper ul li a, .nav-open .auth-wrapper{
+    color: var(--dark-color);
+  }
+
+  .nav-close .nav-wrapper ul li a, .nav-close .auth-wrapper{
     color: var(--light-color);
   }
 }
