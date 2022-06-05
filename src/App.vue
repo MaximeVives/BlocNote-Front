@@ -225,6 +225,7 @@ body{
     width: 100%;
     position: absolute;
     z-index: 10;
+    overflow: hidden;
   }
 
   .nav-close .logo{
