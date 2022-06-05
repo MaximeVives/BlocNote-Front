@@ -97,6 +97,7 @@ export default {
 body{
   font-family: var(--font-general);
   max-height: 100vh;
+  background: white;
   /*overflow-y: hidden;*/
 }
 
