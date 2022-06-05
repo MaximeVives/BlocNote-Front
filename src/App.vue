@@ -265,5 +265,13 @@ body{
   }
 }
 
+@media screen and (max-width: 480px){
+  .nav-open .logo{
+    display: none;
+  }
+}
+
+
+
 </style>
 
